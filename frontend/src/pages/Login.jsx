@@ -4,8 +4,8 @@ import flagsmith from 'flagsmith';
 import InteractiveLogin from './InteractiveLogin';
 import BasicLogin from './BasicLogin';
 
-// Optional: you can read this from environment variables
-const FLAGSMITH_ENVIRONMENT_ID = import.meta.env.VITE_FLAGSMITH_ENV_ID;
+const FLAGSMITH_ENVIRONMENT_ID =
+  import.meta.env.VITE_FLAGSMITH_ENVIRONMENT_ID;
 
 const Login = () => {
   const [isInteractive, setIsInteractive] = useState(false);
@@ -23,7 +23,6 @@ const Login = () => {
         });
       } catch (error) {
         console.error('Failed to initialize Flagsmith', error);
-        // Fallback to basic UI if Flagsmith fails
         setIsLoaded(true);
       }
     };
@@ -35,7 +34,6 @@ const Login = () => {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', background: '#0e0b29', color: '#fff' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-          {/* A refined loading text for the authentication portal */}
           <p style={{ fontFamily: 'sans-serif', fontSize: '1.1rem', fontWeight: '500', letterSpacing: '0.5px' }}>
             Loading Authentication Portal...
           </p>
