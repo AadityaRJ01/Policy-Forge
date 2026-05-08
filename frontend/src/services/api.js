@@ -31,7 +31,7 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     const originalRequest = error.config;
-    if (error.response?.status === 401 && !originalRequest.url.includes('/auth/login')) {
+    if (error.response?.status === 401 && !originalRequest.url.includes('/api/auth/login')) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.href = '/login';
@@ -46,7 +46,7 @@ api.interceptors.response.use(
 
 export const authAPI = {
   login: async (email, password) => {
-    const response = await api.post('/auth/login', { email, password });
+    const response = await api.post('/api/auth/login', { email, password });
     // Note: Backend now returns user.id and uppercase Role (STUDENT/ADMIN)
     return response.data;
   },
