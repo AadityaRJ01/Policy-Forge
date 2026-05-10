@@ -116,7 +116,9 @@ async function startServer() {
   }
 }
 
-startServer();
+if (process.env.NODE_ENV !== 'test') {
+  startServer();
+}
 
 // =========================
 // GRACEFUL SHUTDOWN
@@ -137,4 +139,4 @@ process.on('unhandledRejection', (err) => {
   console.error('Unhandled Promise Rejection:', err);
 });
 
-module.exports = app;
+module.exports = { app, prisma };

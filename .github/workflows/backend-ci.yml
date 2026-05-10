@@ -80,7 +80,12 @@ jobs:
           cd backend
           npx prisma migrate deploy
 
-      - name: Seed DB
+            - name: Seed DB
         run: |
           cd backend
           npm run seed
+
+      - name: Run Backend Tests
+        run: |
+          cd backend
+          npm test
